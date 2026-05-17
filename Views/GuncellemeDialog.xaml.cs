@@ -1,7 +1,7 @@
 using System.Windows;
-using BirtanaArsivTakip.Helpers;
+using ArsivTakip.Helpers;
 
-namespace BirtanaArsivTakip.Views;
+namespace ArsivTakip.Views;
 
 public partial class GuncellemeDialog : Window
 {

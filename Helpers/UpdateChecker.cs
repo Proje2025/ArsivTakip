@@ -4,11 +4,11 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text.Json;
 
-namespace BirtanaArsivTakip.Helpers;
+namespace ArsivTakip.Helpers;
 
 public class UpdateChecker
 {
-    private const string GitHubApiUrl = "https://api.github.com/repos/ahiska03/BirtanaArsivTakip/releases/latest";
+    private const string GitHubApiUrl = "https://api.github.com/repos/ahiska03/ArsivTakip/releases/latest";
     private readonly string _currentVersion;
     private readonly string _appPath;
     private string? _downloadUrl;

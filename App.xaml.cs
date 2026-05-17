@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace BirtanaArsivTakip;
+namespace ArsivTakip;
 
 /// <summary>
 /// Interaction logic for App.xaml

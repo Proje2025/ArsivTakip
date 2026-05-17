@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BirtanaArsivTakip.Models;
+namespace ArsivTakip.Models;
 
 public class Klasor
 {

@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace BirtanaArsivTakip.ViewModels;
+namespace ArsivTakip.ViewModels;
 
 public abstract class ViewModelBase : INotifyPropertyChanged
 {

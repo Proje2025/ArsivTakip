@@ -4,7 +4,7 @@
 #define MyAppName "Arşiv Takip Programı"
 #define MyAppVersion "1.0.1"
 #define MyAppPublisher "Birtana"
-#define MyAppURL "https://github.com/ahiska03/BirtanaArsivTakip"
+#define MyAppURL "https://github.com/Proje2025/ArsivTakip"
 #define MyAppExeName "ArsivTakip.exe"
 
 [Setup]
@@ -20,7 +20,7 @@ DisableProgramGroupPage=yes
 LicenseFile=
 PrivilegesRequired=lowest
 OutputDir=Kurulum
-OutputBaseFilename=BirtanaArsivKurulum
+OutputBaseFilename=ArsivTakipKurulum
 SetupIconFile=
 Compression=lzma
 SolidCompression=yes

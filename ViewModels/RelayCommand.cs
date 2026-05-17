@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace BirtanaArsivTakip.ViewModels;
+namespace ArsivTakip.ViewModels;
 
 public class RelayCommand : ICommand
 {

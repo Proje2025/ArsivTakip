@@ -2,13 +2,13 @@ using System.IO;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using BirtanaArsivTakip.Data;
-using BirtanaArsivTakip.ViewModels;
-using BirtanaArsivTakip.Helpers;
-using BirtanaArsivTakip.Views;
+using ArsivTakip.Data;
+using ArsivTakip.ViewModels;
+using ArsivTakip.Helpers;
+using ArsivTakip.Views;
 using System.Windows.Controls;
 
-namespace BirtanaArsivTakip;
+namespace ArsivTakip;
 
 public partial class MainWindow : Window
 {

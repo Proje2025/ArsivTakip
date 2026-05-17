@@ -3,10 +3,10 @@ using System.IO;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
-using BirtanaArsivTakip.Data;
-using BirtanaArsivTakip.Models;
+using ArsivTakip.Data;
+using ArsivTakip.Models;
 
-namespace BirtanaArsivTakip.ViewModels;
+namespace ArsivTakip.ViewModels;
 
 public class KlasorTreeItem : ViewModelBase
 {

@@ -1,8 +1,8 @@
 using System.Windows;
-using BirtanaArsivTakip.Data;
-using BirtanaArsivTakip.Models;
+using ArsivTakip.Data;
+using ArsivTakip.Models;
 
-namespace BirtanaArsivTakip.Views;
+namespace ArsivTakip.Views;
 
 public partial class KlasorEkleDialog : Window
 {

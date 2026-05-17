@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using BirtanaArsivTakip.Models;
+using ArsivTakip.Models;
 
-namespace BirtanaArsivTakip.Data;
+namespace ArsivTakip.Data;
 
 public class ArsivDbContext : DbContext
 {
