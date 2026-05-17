@@ -1,0 +1,64 @@
+<Window x:Class="BirtanaArsivTakip.Views.EvrakEkleGuncelleDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Evrak Ekle" Width="450"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F5F5F5">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Name="BaslikText" Text="Yeni Evrak Ekle" FontSize="16" FontWeight="Bold" Foreground="#2E5090" Margin="0,0,0,15"/>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Konu:*" Margin="0,0,0,5"/>
+            <TextBox x:Name="KonuTextBox" Padding="5" Width="380" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,0,0,10">
+            <TextBlock Text="Sayı:*" Margin="0,0,0,5"/>
+            <TextBox x:Name="SayiTextBox" Padding="5" Width="380" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="0,0,0,10">
+            <TextBlock Text="Tarih:*" Margin="0,0,0,5"/>
+            <DatePicker x:Name="TarihDatePicker" Width="200" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Margin="0,0,0,10">
+            <TextBlock Text="Açıklama:" Margin="0,0,0,5"/>
+            <TextBox x:Name="AciklamaTextBox" Padding="5" Width="380" Height="60" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Margin="0,0,0,10">
+            <TextBlock Text="Klasör:*" Margin="0,0,0,5"/>
+            <ComboBox x:Name="KlasorComboBox" Width="380" DisplayMemberPath="KlasorAdi"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Margin="0,0,0,10">
+            <TextBlock Text="PDF Dosyası:" Margin="0,0,0,5"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="PdfYoluTextBox" Padding="5" Width="280" IsReadOnly="True"/>
+                <Button Content="Seç" Padding="10,5" Margin="5,0,0,0" Click="PdfSec_Click"/>
+                <Button Content="Kaldır" Padding="10,5" Margin="5,0,0,0" Click="PdfKaldir_Click"/>
+            </StackPanel>
+            <TextBlock x:Name="PdfDurumText" Text="" Foreground="Green" Margin="0,5,0,0" FontSize="11"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="İptal" Width="80" Padding="10,5" Margin="0,0,10,0" Click="Iptal_Click"/>
+            <Button Content="Kaydet" Width="80" Padding="10,5" Background="#2E5090" Foreground="White" Click="Kaydet_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
