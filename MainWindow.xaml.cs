@@ -71,6 +71,15 @@ public partial class MainWindow : Window
 
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
+        if (UpdateChecker.TryGetFailedUpdateMessage(out var failedUpdateMessage))
+        {
+            MessageBox.Show(
+                failedUpdateMessage,
+                "Güncelleme",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+        }
+
         try
         {
             var hasUpdate = await _updateChecker.CheckForUpdateAsync();
@@ -118,7 +127,11 @@ public partial class MainWindow : Window
             }
             else
             {
-                MessageBox.Show($"Güncelsiniz! Mevcut Sürüm: v{_updateChecker.CurrentVersion}", "Güncelleme Kontrolü", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(
+                    $"Güncelsiniz!\n\nKurulu sürüm: v{_updateChecker.CurrentVersion}\nYayındaki son sürüm: v{_updateChecker.LatestVersion}",
+                    "Güncelleme Kontrolü",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
         }
         catch (Exception ex)

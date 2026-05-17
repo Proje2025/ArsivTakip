@@ -2,7 +2,7 @@
 ; Inno Setup 6
 
 #define MyAppName "Arşiv Takip Programı"
-#define MyAppVersion "1.0.1"
+#define MyAppVersion "1.1.1"
 #define MyAppPublisher "Birtana"
 #define MyAppURL "https://github.com/Proje2025/ArsivTakip"
 #define MyAppExeName "ArsivTakip.exe"
@@ -21,7 +21,7 @@ LicenseFile=
 PrivilegesRequired=lowest
 OutputDir=Kurulum
 OutputBaseFilename=ArsivTakipKurulum
-SetupIconFile=
+SetupIconFile=Assets\icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -44,38 +44,6 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram}"; Flags: nowait postinstall skipifsilent
 
 [Code]
-var
-  DatabaseNamePage: TInputQueryWizardPage;
-  DatabaseName: string;
-
-procedure InitializeWizard;
-begin
-  DatabaseNamePage := CreateInputQueryPage(
-    wpSelectTasks,
-    'Veritabanı Ayarları',
-    'SQL Server Veritabanı Adı',
-    'Lütfen kullanmak istediğiniz veritabanı adını giriniz:'
-  );
-
-  DatabaseNamePage.Add('Veritabanı Adı:', False);
-  DatabaseNamePage.Values[0] := 'ArsivDB';
-end;
-
-function NextButtonClick(CurPageID: Integer): Boolean;
-begin
-  if CurPageID = DatabaseNamePage.ID then
-  begin
-    DatabaseName := DatabaseNamePage.Values[0];
-    if Trim(DatabaseName) = '' then
-    begin
-      MsgBox('Lütfen bir veritabanı adı giriniz!', mbError, MB_OK);
-      Result := False;
-      Exit;
-    end;
-  end;
-  Result := True;
-end;
-
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   ConfigFile: TStringList;
@@ -86,9 +54,9 @@ begin
     try
       ConfigFile.Add('{');
       ConfigFile.Add('  "ConnectionStrings": {');
-      ConfigFile.Add('    "DefaultConnection": "Server=SUNUCU\\SQLEXPRESS;Database=' + DatabaseName + ';Trusted_Connection=True;TrustServerCertificate=True;"');
+      ConfigFile.Add('    "DefaultConnection": "Data Source=ArsivDB.db"');
       ConfigFile.Add('  },');
-      ConfigFile.Add('  "PdfFolderPath": "\\\\SUNUCU\\Arsiv"');
+      ConfigFile.Add('  "PdfFolderPath": "ArsivPDF"');
       ConfigFile.Add('}');
       ConfigFile.SaveToFile(ExpandConstant('{app}\appsettings.json'));
     finally

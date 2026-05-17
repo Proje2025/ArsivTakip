@@ -10,9 +10,9 @@
     <RootNamespace>ArsivTakip</RootNamespace>
     <AssemblyTitle>Arşiv Takip</AssemblyTitle>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-    <Version>1.1.0</Version>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.1</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
     <Company>Birtana</Company>
     <Product>Arşiv Takip Programı</Product>
     <Description>Evrak ve belge arşivleme sistemi</Description>
@@ -26,6 +26,13 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Setup\**" />
+    <Page Remove="Setup\**" />
+    <None Remove="Setup\**" />
+    <EmbeddedResource Remove="Setup\**" />
   </ItemGroup>
 
   <ItemGroup>

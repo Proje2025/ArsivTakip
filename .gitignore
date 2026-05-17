@@ -50,3 +50,5 @@ Kurulum/
 # Build output
 publish/
 publish-full/
+test-update/
+publish-portable/

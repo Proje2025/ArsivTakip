@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Threading;
 using ArsivTakip.Helpers;
 
 namespace ArsivTakip.Views;
@@ -21,6 +22,12 @@ public partial class GuncellemeDialog : Window
         DegisikliklerText.Text = string.IsNullOrWhiteSpace(updateChecker.ReleaseNotes)
             ? "Yeni özellikler ve iyileştirmeler mevcut."
             : updateChecker.ReleaseNotes;
+
+        if (!updateChecker.HasDownloadAsset)
+        {
+            GuncelleButton.IsEnabled = false;
+            GuncelleButton.ToolTip = "Bu sürüm için indirilebilir dosya bulunamadı.";
+        }
     }
 
     private async void Guncelle_Click(object sender, RoutedEventArgs e)
@@ -29,20 +36,29 @@ public partial class GuncellemeDialog : Window
         SonraButton.IsEnabled = false;
         IndirmeBar.Visibility = Visibility.Visible;
         IndirmeBar.IsIndeterminate = false;
+        IndirmeBar.Value = 0;
 
         var success = await _updateChecker.DownloadAndInstallUpdateAsync(new Progress<int>(p =>
         {
-            IndirmeBar.Value = p;
+            Dispatcher.Invoke(() => IndirmeBar.Value = p, DispatcherPriority.Background);
         }));
 
         if (success)
         {
-            Application.Current.Shutdown();
+            _onGuncelle?.Invoke();
+            Environment.Exit(0);
         }
         else
         {
-            MessageBox.Show("Güncelleme indirilirken hata oluştu. Lütfen manuel olarak indirin.", "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
-            GuncelleButton.IsEnabled = true;
+            var detail = string.IsNullOrWhiteSpace(_updateChecker.LastError)
+                ? ""
+                : $"\n\n{_updateChecker.LastError}";
+            MessageBox.Show(
+                $"Güncelleme indirilirken veya uygulanırken hata oluştu. Lütfen manuel olarak indirin.{detail}",
+                "Hata",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+            GuncelleButton.IsEnabled = _updateChecker.HasDownloadAsset;
             SonraButton.IsEnabled = true;
             IndirmeBar.Visibility = Visibility.Collapsed;
         }
