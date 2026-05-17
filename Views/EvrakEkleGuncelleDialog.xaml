@@ -43,7 +43,7 @@
 
         <StackPanel Grid.Row="5" Margin="0,0,0,10">
             <TextBlock Text="Klasör:*" Margin="0,0,0,5"/>
-            <ComboBox x:Name="KlasorComboBox" Width="380" DisplayMemberPath="KlasorAdi"/>
+            <ComboBox x:Name="KlasorComboBox" Width="380" DisplayMemberPath="GorunumAdi"/>
         </StackPanel>
 
         <StackPanel Grid.Row="6" Margin="0,0,0,10">

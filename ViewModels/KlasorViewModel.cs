@@ -16,7 +16,7 @@ public class KlasorTreeItem : ViewModelBase
 
     public Klasor Klasor { get; }
 
-    public string KlasorAdi => Klasor.KlasorAdi;
+    public string KlasorAdi => Klasor.GorunumAdi;
     public int Id => Klasor.Id;
 
     public ObservableCollection<KlasorTreeItem> Children { get; } = new();
@@ -345,7 +345,10 @@ public class MainViewModel : ViewModelBase
             .Where(e => !e.Silindi);
 
         if (!string.IsNullOrWhiteSpace(AramaMetni))
-            query = query.Where(e => e.Konu.Contains(AramaMetni) || (e.Aciklama != null && e.Aciklama.Contains(AramaMetni)));
+            query = query.Where(e => e.Konu.Contains(AramaMetni) || 
+                                     (e.Aciklama != null && e.Aciklama.Contains(AramaMetni)) || 
+                                     (e.Klasor != null && e.Klasor.KlasorAdi.Contains(AramaMetni)) || 
+                                     (e.Klasor != null && e.Klasor.Tarih != null && e.Klasor.Tarih.Contains(AramaMetni)));
 
         if (!string.IsNullOrWhiteSpace(AramaSayi))
             query = query.Where(e => e.Sayi.Contains(AramaSayi));

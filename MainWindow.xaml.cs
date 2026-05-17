@@ -51,6 +51,11 @@ public partial class MainWindow : Window
 
         _context = new ArsivDbContext(optionsBuilder.Options);
         _context.Database.EnsureCreated();
+        try
+        {
+            _context.Database.ExecuteSqlRaw("ALTER TABLE Klasorler ADD COLUMN Tarih TEXT;");
+        }
+        catch { }
 
         _viewModel = new MainViewModel(_context, pdfFolderPath);
         DataContext = _viewModel;

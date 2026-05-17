@@ -20,6 +20,12 @@ public class Klasor
     [ForeignKey("UstKlasorId")]
     public virtual Klasor? UstKlasor { get; set; }
 
+    [MaxLength(50)]
+    public string? Tarih { get; set; }
+
+    [NotMapped]
+    public string GorunumAdi => string.IsNullOrWhiteSpace(Tarih) ? KlasorAdi : $"{KlasorAdi}({Tarih})";
+
     public virtual ICollection<Klasor> AltKlasorler { get; set; } = new List<Klasor>();
 
     public virtual ICollection<Evrak> Evraklar { get; set; } = new List<Evrak>();

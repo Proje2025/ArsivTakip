@@ -31,6 +31,7 @@ public partial class KlasorEkleDialog : Window
         var yeniKlasor = new Klasor
         {
             KlasorAdi = KlasorAdiTextBox.Text.Trim(),
+            Tarih = string.IsNullOrWhiteSpace(TarihTextBox.Text) ? null : TarihTextBox.Text.Trim(),
             Aciklama = string.IsNullOrWhiteSpace(AciklamaTextBox.Text) ? null : AciklamaTextBox.Text.Trim()
         };
 

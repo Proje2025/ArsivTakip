@@ -46,3 +46,7 @@ Kurulum/
 
 # Distribution
 *.zip
+
+# Build output
+publish/
+publish-full/

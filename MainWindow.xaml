@@ -166,7 +166,7 @@
                             <DataGridTextColumn Header="Sayı" Binding="{Binding Sayi}" Width="100"/>
                             <DataGridTextColumn Header="Konu" Binding="{Binding Konu}" Width="*"/>
                             <DataGridTextColumn Header="Tarih" Binding="{Binding Tarih, StringFormat='{}{0:dd.MM.yyyy}'}" Width="100"/>
-                            <DataGridTextColumn Header="Klasör" Binding="{Binding Klasor.KlasorAdi}" Width="120"/>
+                            <DataGridTextColumn Header="Klasör" Binding="{Binding Klasor.GorunumAdi}" Width="120"/>
                             <DataGridTextColumn Header="PDF" Width="60">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
