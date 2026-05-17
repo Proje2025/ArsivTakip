@@ -1,4 +1,4 @@
-<Window x:Class="BirtanaArsivTakip.Views.KlasorEkleDialog"
+<Window x:Class="ArsivTakip.Views.KlasorEkleDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Klasör Ekle" MinHeight="350" Width="400"

@@ -8,7 +8,7 @@ namespace ArsivTakip.Helpers;
 
 public class UpdateChecker
 {
-    private const string GitHubApiUrl = "https://api.github.com/repos/ahiska03/ArsivTakip/releases/latest";
+    private const string GitHubApiUrl = "https://api.github.com/repos/Proje2025/ArsivTakip/releases/latest";
     private readonly string _currentVersion;
     private readonly string _appPath;
     private string? _downloadUrl;
