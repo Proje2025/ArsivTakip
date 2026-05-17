@@ -193,7 +193,7 @@
 
         <!-- Status Bar -->
         <Border Grid.Row="3" Background="#E0E0E0" Padding="10,5">
-            <TextBlock Text="Hazır" Foreground="#666"/>
+            <TextBlock Text="{Binding StatusText}" Foreground="#666"/>
         </Border>
     </Grid>
 </Window>

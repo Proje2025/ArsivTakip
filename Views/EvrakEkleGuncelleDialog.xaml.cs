@@ -65,9 +65,24 @@ public partial class EvrakEkleGuncelleDialog : Window
 
         if (dialog.ShowDialog() == true)
         {
+            var dosyaAdi = Path.GetFileName(dialog.FileName);
+
+            // Güvenlik: Dosya uzantısı kontrolü
+            if (!dosyaAdi.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Yalnızca PDF dosyaları seçilebilir.", "Uyarı", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Güvenlik: Dosya adındaki tehlikeli karakterleri temizle
+            foreach (var c in Path.GetInvalidFileNameChars())
+            {
+                dosyaAdi = dosyaAdi.Replace(c, '_');
+            }
+
             _secilenPdfDosyasi = dialog.FileName;
-            PdfYoluTextBox.Text = Path.GetFileName(dialog.FileName);
-            PdfDurumText.Text = "Seçili dosya: " + Path.GetFileName(dialog.FileName);
+            PdfYoluTextBox.Text = dosyaAdi;
+            PdfDurumText.Text = "Seçili dosya: " + dosyaAdi;
         }
     }
 

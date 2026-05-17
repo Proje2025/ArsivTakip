@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -10,9 +10,9 @@
     <RootNamespace>ArsivTakip</RootNamespace>
     <AssemblyTitle>Arşiv Takip</AssemblyTitle>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
     <Company>Birtana</Company>
     <Product>Arşiv Takip Programı</Product>
     <Description>Evrak ve belge arşivleme sistemi</Description>

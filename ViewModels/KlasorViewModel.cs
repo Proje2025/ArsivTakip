@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,7 @@ public class MainViewModel : ViewModelBase
     private string _aramaSayi = string.Empty;
     private DateTime? _aramaBaslangicTarih;
     private DateTime? _aramaBitisTarih;
+    private string _statusText = "Hazır";
 
     public ObservableCollection<KlasorTreeItem> KlasorTree
     {
@@ -135,6 +137,12 @@ public class MainViewModel : ViewModelBase
     public ICommand EvrakSilCommand { get; }
     public ICommand TemizleCommand { get; }
 
+    public string StatusText
+    {
+        get => _statusText;
+        set => SetProperty(ref _statusText, value);
+    }
+
     public MainViewModel(ArsivDbContext context, string pdfFolderPath)
     {
         _context = context;
@@ -199,6 +207,8 @@ public class MainViewModel : ViewModelBase
         Evraklar.Clear();
         foreach (var e in evraklar)
             Evraklar.Add(e);
+
+        StatusText = $"{SelectedTreeItem.KlasorAdi} - {Evraklar.Count} evrak";
     }
 
     private void KlasorEkle(object? param)
@@ -287,6 +297,39 @@ public class MainViewModel : ViewModelBase
         }
     }
 
+    public void PdfAc()
+    {
+        if (SelectedEvrak == null || string.IsNullOrEmpty(SelectedEvrak.PdfDosyaAdi)) return;
+
+        var tamYol = Path.Combine(_pdfFolderPath, SelectedEvrak.PdfDosyaAdi);
+
+        if (!File.Exists(tamYol))
+        {
+            System.Windows.MessageBox.Show(
+                $"PDF dosyası bulunamadı: {tamYol}\n\nDosya taşınmış veya silinmiş olabilir.",
+                "Hata",
+                System.Windows.MessageBoxButton.OK,
+                System.Windows.MessageBoxImage.Error);
+            return;
+        }
+
+        try
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = tamYol,
+                UseShellExecute = true
+            });
+        }
+        catch (Exception ex)
+        {
+            System.Windows.MessageBox.Show(
+                $"PDF açılamadı: {ex.Message}",
+                "Hata",
+                System.Windows.MessageBoxButton.OK,
+                System.Windows.MessageBoxImage.Error);
+        }
+    }
 
     private void AramaYap()
     {

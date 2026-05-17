@@ -57,7 +57,11 @@ public partial class MainWindow : Window
 
         KlasorTreeView.SelectedItemChanged += KlasorTreeView_SelectedItemChanged;
 
+        // Evrak listesinde çift tıklama ile PDF açma
+        EvrakDataGrid.MouseDoubleClick += EvrakDataGrid_MouseDoubleClick;
+
         Loaded += MainWindow_Loaded;
+        Closed += MainWindow_Closed;
     }
 
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -78,12 +82,22 @@ public partial class MainWindow : Window
         }
     }
 
+    private void MainWindow_Closed(object? sender, EventArgs e)
+    {
+        _context?.Dispose();
+    }
+
     private void KlasorTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
     {
         if (e.NewValue is KlasorTreeItem treeItem)
         {
             _viewModel.SelectedTreeItem = treeItem;
         }
+    }
+
+    private void EvrakDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        _viewModel.PdfAc();
     }
 
     private async void GuncellemeKontrol_Click(object sender, RoutedEventArgs e)
